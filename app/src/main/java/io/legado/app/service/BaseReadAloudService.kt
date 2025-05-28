@@ -557,7 +557,7 @@ abstract class BaseReadAloudService : BaseService(),
             .setShowActionsInCompactView(1, 2, 4)
         if (isVivoDevice || isSamsungDevice) {
             //fix #4090 android 14 can not show play control in lock screen
-            mediaStyle.setMediaSession(mediaSessionCompat.sessionToken)
+            // mediaStyle.setMediaSession(mediaSessionCompat.sessionToken)
         }
         return mediaStyle
     }
