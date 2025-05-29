@@ -285,6 +285,7 @@ abstract class BaseReadAloudService : BaseService(),
         needResumeOnAudioFocusGain = false
         needResumeOnCallStateIdle = false
         upReadAloudNotification()
+        upMediaSessionPlaybackState(PlaybackStateCompat.STATE_PLAYING)
         postEvent(EventBus.ALOUD_STATE, Status.PLAY)
     }
 
@@ -345,7 +346,6 @@ abstract class BaseReadAloudService : BaseService(),
         } else {
             toLast = true
             ReadBook.moveToPrevChapter(true)
-            upMediaSessionPlaybackState(PlaybackStateCompat.STATE_PLAYING)
         }
     }
 
