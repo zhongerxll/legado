@@ -674,6 +674,7 @@ abstract class BaseReadAloudService : BaseService(),
         if (!ReadBook.moveToNextChapter(true)) {
             stopSelf()
         }
+        play()
     }
 
     private fun initPhoneStateListener() {
