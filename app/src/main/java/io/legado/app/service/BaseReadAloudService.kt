@@ -345,6 +345,7 @@ abstract class BaseReadAloudService : BaseService(),
         } else {
             toLast = true
             ReadBook.moveToPrevChapter(true)
+            play()
         }
     }
 
@@ -368,6 +369,7 @@ abstract class BaseReadAloudService : BaseService(),
             play()
         } else {
             nextChapter()
+            play()
         }
     }
 
