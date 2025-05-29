@@ -345,7 +345,7 @@ abstract class BaseReadAloudService : BaseService(),
         } else {
             toLast = true
             ReadBook.moveToPrevChapter(true)
-            play()
+            upMediaSessionPlaybackState(PlaybackStateCompat.STATE_PLAYING)
         }
     }
 
@@ -369,7 +369,7 @@ abstract class BaseReadAloudService : BaseService(),
             play()
         } else {
             nextChapter()
-            play()
+            upMediaSessionPlaybackState(PlaybackStateCompat.STATE_PLAYING)
         }
     }
 
