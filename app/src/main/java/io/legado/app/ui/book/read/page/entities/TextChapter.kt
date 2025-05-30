@@ -197,8 +197,7 @@ data class TextChapter(
 
     fun getSentenceNum(position: Int): Int {
         val sentences = getContent()
-          .split(sentenceSplitRegex)
-          .map { it.trim() }
+          .split(Regex("[【,.!?，。；！？】]"))
           .filter { it.isNotEmpty() }
         var cumulative = 0
         for ((idx, s) in sentences.withIndex()) {
