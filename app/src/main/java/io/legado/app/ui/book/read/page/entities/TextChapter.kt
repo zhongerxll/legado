@@ -206,7 +206,7 @@ data class TextChapter(
             return idx + 1
           }
         }
-      return sentences.size
+        return sentences.size
     }
     
     fun getParagraphNum(
