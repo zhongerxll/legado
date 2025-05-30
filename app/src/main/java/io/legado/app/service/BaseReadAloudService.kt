@@ -242,7 +242,7 @@ abstract class BaseReadAloudService : BaseService(),
             contentList = textChapter.getNeedReadAloud(0, readAloudByPage, 0)
                 .split(
                     if (getPrefBoolean("readAloudBySentence", false))
-                        Regex("[,，]")
+                        Regex("[【,.!?，。；！？】]")
                     else
                         Regex("\n")
                 )
