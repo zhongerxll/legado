@@ -239,9 +239,10 @@ abstract class BaseReadAloudService : BaseService(),
             }
             readAloudNumber = textChapter.getReadLength(pageIndex) + startPos
             readAloudByPage = getPrefBoolean(PreferKey.readAloudByPage)
+            readAloudBySentence = getPrefBoolean("readAloudBySentence", false)
             contentList = textChapter.getNeedReadAloud(0, readAloudByPage, 0)
                 .split(
-                    if (getPrefBoolean("readAloudBySentence", false))
+                    if (readAloudBySentence)
                         Regex("[【,.!?，。；！？】]")
                     else
                         Regex("\n")
@@ -256,7 +257,11 @@ abstract class BaseReadAloudService : BaseService(),
                     pos = tmp
                 }
             }
-            nowSpeak = textChapter.getParagraphNum(readAloudNumber + 1, readAloudByPage) - 1
+            nowSpeak = if (readAloudBySentence) {
+                 textChapter.getSentenceNum(readAloudNumber + 1) - 1
+            } else {
+                textChapter.getParagraphNum(readAloudNumber + 1, readAloudByPage) - 1
+            }
             if (!readAloudByPage && startPos == 0 && !toLast) {
                 pos = page.chapterPosition -
                         textChapter.paragraphs[nowSpeak].chapterPosition

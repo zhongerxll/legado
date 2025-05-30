@@ -195,6 +195,21 @@ data class TextChapter(
         return stringBuilder.substring(startPos).toString()
     }
 
+    fun getSentenceNum(position: Int): Int {
+        val sentences = getContent()
+          .split(sentenceSplitRegex)
+          .map { it.trim() }
+          .filter { it.isNotEmpty() }
+        var cumulative = 0
+        for ((idx, s) in sentences.withIndex()) {
+          cumulative += s.length
+          if (position <= cumulative) {
+            return idx + 1
+          }
+        }
+      return sentences.size
+    }
+    
     fun getParagraphNum(
         position: Int,
         pageSplit: Boolean,
