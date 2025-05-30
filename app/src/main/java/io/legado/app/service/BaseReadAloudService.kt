@@ -240,7 +240,12 @@ abstract class BaseReadAloudService : BaseService(),
             readAloudNumber = textChapter.getReadLength(pageIndex) + startPos
             readAloudByPage = getPrefBoolean(PreferKey.readAloudByPage)
             contentList = textChapter.getNeedReadAloud(0, readAloudByPage, 0)
-                .split("\n")
+                .split(
+                    if (getPrefBoolean("readAloudBySentence", false))
+                        Regex("[,，]")
+                    else
+                        Regex("\n")
+                )
                 .filter { it.isNotEmpty() }
             var pos = startPos
             val page = textChapter.getPage(pageIndex)!!
