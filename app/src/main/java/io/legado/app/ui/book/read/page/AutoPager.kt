@@ -83,6 +83,7 @@ class AutoPager(private val readView: ReadView) {
             if (!isPausing) {
                 readView.curPage.scroll(-scrollOffset)
                 scrollOffset = 0
+                readView.postInvalidate()
             }
         } else {
             val bottom = progress
